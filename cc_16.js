@@ -30,3 +30,43 @@ async function fetchProductsAsync() {
     handleError(error);
   }
 }
+// Task 3: Using async/await with try/catch
+async function fetchProductsAsync() {
+  try {
+    const response = await fetch('https://www.course-api.com/javascript-store-products');
+    if (!response.ok) {
+      throw new Error(`HTTP ERROR!: ${response.status}`);
+    }
+    const products = await response.json();
+    displayProducts(products);
+  } catch (error) {
+    handleError(error);
+  }
+}
+//  Task 4: Display the first 5 products
+function displayProducts(products) {
+  const container = document.getElementById('product-container');
+  container.innerHTML = '';
+
+  products.slice(0, 5).forEach(product => {
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card');
+
+    productCard.innerHTML = `
+      <img src="${product.fields.image[0].url}" alt="${product.fields.name}"><h3>${product.fields.name}</h3><p>$${product.fields.price / 100}</p>`;
+    container.appendChild(productCard);
+  });
+}
+// Task 3: Using async/await with try/catch
+async function fetchProductsAsync() {
+  try {
+    const response = await fetch('https://www.course-api.com/javascript-store-products');
+    if (!response.ok) {
+      throw new Error(`HTTP ERROR!: ${response.status}`);
+    }
+    const products = await response.json();
+    displayProducts(products);
+  } catch (error) {
+    handleError(error);
+  }
+}
