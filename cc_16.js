@@ -70,3 +70,11 @@ async function fetchProductsAsync() {
     handleError(error);
   }
 }
+// Task 4: Reusable error handler
+function handleError(error) {
+  console.error("An error occurred:", error.message);
+}
+// Task 5: Reusable error handler
+function handleError(error) {
+  console.error("An error occurred:", error.message);
+}
